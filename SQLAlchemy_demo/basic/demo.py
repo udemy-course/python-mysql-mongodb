@@ -22,7 +22,7 @@ class User(BASE):
         )
 
 
-engine = sa.create_engine("mysql+pymysql://root:root@localhost:3306/demo", echo=True)
+engine = sa.create_engine("mysql+pymysql://root:root@localhost:3306/demo", echo=False)
 Session = sa.orm.sessionmaker(bind=engine)
 
 BASE.metadata.create_all(engine)
@@ -79,13 +79,44 @@ BASE.metadata.create_all(engine)
 # for u in users:
 #     print(u)
 
+# SELECT columns
+
+# mysql> select id, username from user;
+# +----+----------+
+# | id | username |
+# +----+----------+
+# |  1 | test1    |
+# |  2 | test2    |
+# |  3 | test3    |
+# |  4 | test4    |
+# |  5 | test5    |
+# |  6 | test6    |
+# |  7 | test7    |
+# |  9 | test8    |
+# |  8 | test9    |
+# +----+----------+
+# 9 rows in set (0.00 sec)
+
+# s = Session()
+
+# u1 = s.query(User)
+# for u in u1:
+#     print(u, type(u))
+
+# u2 = s.query(User.id, User.username)
+# for u in u2:
+#     print(u, type(u))
+
+
+
+
 #---------------------------------------------------------------------------
 #                             Data  Update
 #---------------------------------------------------------------------------
 
-s = Session()
-u = s.query(User).filter(User.username == 'test1').first()
-print(u.password)
-u.password = 'test222'
-u.email = '2222@111.com'
-s.commit()
+# s = Session()
+# u = s.query(User).filter(User.username == 'test1').first()
+# print(u.password)
+# u.password = 'test222'
+# u.email = '2222@111.com'
+# s.commit()
