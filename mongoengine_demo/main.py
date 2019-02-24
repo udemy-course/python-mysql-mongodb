@@ -69,7 +69,9 @@ def add_user():
 
 
 def list_users():
-    pass
+    users = User.objects(age__in=[25, 28])
+    for user in users:
+        print('username={}, age={}'.format(user.username, user.age))
 
 
 if __name__ == "__main__":
