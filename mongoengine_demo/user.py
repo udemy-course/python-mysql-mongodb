@@ -28,4 +28,5 @@ class User(mongoengine.Document):
     meta = {
         'db_alias': 'core',
         'collection': 'users',
+        'ordering': ['-age']
     }

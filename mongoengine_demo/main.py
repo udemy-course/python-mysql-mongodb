@@ -69,7 +69,10 @@ def add_user():
 
 
 def list_users():
-    users = User.objects(age__in=[25, 28])
+    # users = User.objects(age__in=[25, 28])
+    # users = User.objects(address__city="ShangHai")
+    # users = User.objects(hobbies__match={'type': 'reading'})
+    users = User.objects()[2:4]
     for user in users:
         print('username={}, age={}'.format(user.username, user.age))
 
