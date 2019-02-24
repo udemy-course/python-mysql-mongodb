@@ -27,6 +27,8 @@ def user_loop():
         print("Available actions:")
         print(" * [a]dd user")
         print(" * [l]ist users")
+        print(" * [u]pdate password")
+        print(" * [d]elete user")
         print(" * e[x]it")
         print()
         ch = input("> ").strip().lower()
@@ -34,6 +36,10 @@ def user_loop():
             add_user()
         elif ch == 'l':
             list_users()
+        elif ch == 'u':
+            update_users()
+        elif ch == 'd':
+            delete_users()
         elif not ch or ch == 'x':
             print("Goodbye")
             break
@@ -72,9 +78,32 @@ def list_users():
     # users = User.objects(age__in=[25, 28])
     # users = User.objects(address__city="ShangHai")
     # users = User.objects(hobbies__match={'type': 'reading'})
-    users = User.objects()[2:4]
+    # users = User.objects()[2:4]
+
+    users = User.objects()
     for user in users:
-        print('username={}, age={}'.format(user.username, user.age))
+        print('username={}, passwd={}, age={}'.format(
+            user.username, user.password, user.age))
+
+
+def update_users():
+    username = input('username = ')
+    user = User.objects(username=username).first()
+    if not user:
+        print('user does not exist')
+        return
+    password = input('new password = ')
+    user.password = password
+    user.save()
+
+
+def delete_users():
+    username = input('username = ')
+    user = User.objects(username=username).first()
+    if not user:
+        print('user does not exist')
+        return
+    user.delete()   
 
 
 if __name__ == "__main__":
