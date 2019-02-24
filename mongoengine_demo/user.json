@@ -1,0 +1,21 @@
+{
+    "username": "test1",
+    "password": "test1",
+    "email": "test1@test1.com",
+    "age": 30,
+    "created_at": "2019-02-23T21:19:49.501Z",
+    "address": {
+        "city": "ShangHai",
+        "zip_code": 1234
+    },
+    "hobbies": [
+        {
+            "type": "reading",
+            "rating": 9
+        },
+        {
+            "type": "running",
+            "rating": 10
+        }
+    ]
+}

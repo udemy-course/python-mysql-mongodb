@@ -1,6 +1,6 @@
 import mongoengine
 
-from user import User
+from user import User, Address, Hobby
 
 
 def setup():
@@ -43,13 +43,33 @@ def add_user():
     username = input("username = ")
     password = input("password = ")
     email = input("email = ")
+    age = input("age = ")
+    city = input("city = ")
+    zip_code = input("zip code = ")
 
     user = User()
     user.username = username
     user.password = password
     user.email = email
+    user.age = age
+
+    addr = Address()
+    addr.city = city
+    addr.zip_code = zip_code
+
+    user.address = addr
+
+    h1 = Hobby()
+    h1.type = 'running'
+    h1.rating = 7
+
+    user.hobbies = [h1]
 
     user.save()
+
+
+def list_users():
+    pass
 
 
 if __name__ == "__main__":
